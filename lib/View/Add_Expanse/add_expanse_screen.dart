@@ -30,7 +30,7 @@ class _AddExpanseScreenScreenState extends State<AddExpanseScreen> {
         backgroundColor: Color(0xffeb5f30),
         actions: [
           Container(
-            height: Get.height * 0.03,
+            height: double.infinity,
             width: Get.width * 0.25,
             decoration: BoxDecoration(
                 color: Colors.green, borderRadius: BorderRadius.circular(5)),

@@ -29,35 +29,26 @@ class _ProjectScreenState extends State<ProjectScreen> {
           style: TextStyle(fontFamily: 'Poppins', letterSpacing: 1),
         ),
         iconTheme: IconThemeData(color: Colors.white),
-        leading: Column(
-          children: [
-            SizedBox(
-              height: Get.height * 0.01,
-            ),
-            Container(
-              height: Get.height * 0.090,
-              width: Get.width * 1.19,
-              decoration: BoxDecoration(
-                  color: Colors.green, borderRadius: BorderRadius.circular(5)),
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 25),
-
-                child: TextButton(
-                  onPressed: () {
-                    //          removePreviousRollCall();
-                    //          removePreviousEndDay();
-                    //          tabbedIndex = 0;
-                    //          isPresent = true;
-                    setState(() {});
-                  },
-                  child: Text(
-                    "GET",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
+        leading: Container(
+          height: double.infinity,
+          width: Get.width * 1.19,
+          decoration: BoxDecoration(
+              color: Colors.green, borderRadius: BorderRadius.circular(5)),
+          child: TextButton(
+            onPressed: () {
+              //          removePreviousRollCall();
+              //          removePreviousEndDay();
+              //          tabbedIndex = 0;
+              //          isPresent = true;
+              setState(() {});
+            },
+            child: Center(
+              child: Text(
+                "GET",
+                style: TextStyle(color: Colors.black),
               ),
-            )
-          ],
+            ),
+          ),
         ),
       ),
       body: SingleChildScrollView(

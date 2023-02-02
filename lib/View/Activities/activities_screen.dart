@@ -26,28 +26,23 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
         elevation: 0,
         centerTitle: true,
         backgroundColor: Color(0xffeb5f30),
-        leading:Column(children: [
-          Container(
-            height: Get.height * 0.065,
-            width: Get.width * 0.25,
-            decoration: BoxDecoration(
-                color: Colors.green, borderRadius: BorderRadius.circular(5)),
-            child: Center(
-              child: TextButton(
-                onPressed: () {
-                     Get.offAll(HomeScreen());
-                },
-                child: Text(
-                  "Home",
-                  style: TextStyle(color: Colors.black),
-                ),
+        leading:Container(
+          height: double.infinity,
+          width: Get.width * 0.25,
+          decoration: BoxDecoration(
+              color: Colors.green, borderRadius: BorderRadius.circular(5)),
+          child: Center(
+            child: TextButton(
+              onPressed: () {
+                   Get.offAll(HomeScreen());
+              },
+              child: Text(
+                "Home",
+                style: TextStyle(color: Colors.black),
               ),
             ),
-          )
-        ],
-
-
-      ),
+          ),
+        ),
         title:  Text(
       "${Overseer.projectName}",
         style: TextStyle(fontFamily: 'poppins'),

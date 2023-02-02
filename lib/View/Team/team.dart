@@ -81,35 +81,26 @@ class _TeamScreenState extends State<TeamScreen> {
           style: TextStyle(fontFamily: 'poppins'),
         ),
         iconTheme: IconThemeData(color: Colors.white),
-        leading: Column(
-          children: [
-            SizedBox(
-              height: Get.height * 0.001,
-            ),
-            Container(
-              height: Get.height * 0.097,
-              width: Get.width * 0.99,
-              decoration: BoxDecoration(
-                  color: Colors.green, borderRadius: BorderRadius.circular(5)),
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 25),
-
-                child: TextButton(
-                  onPressed: () {
+        leading: Container(
+          height: double.infinity,
+          width: Get.width * 0.99,
+          decoration: BoxDecoration(
+              color: Colors.green, borderRadius: BorderRadius.circular(5)),
+          child: TextButton(
+            onPressed: () {
           //          removePreviousRollCall();
           //          removePreviousEndDay();
           //          tabbedIndex = 0;
           //          isPresent = true;
-                    setState(() {});
-                  },
-                  child: Text(
-                    "SET",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
+              setState(() {});
+            },
+            child: Center(
+              child: Text(
+                "SET",
+                style: TextStyle(color: Colors.black),
               ),
-            )
-          ],
+            ),
+          ),
         ),
       ),
       body: Container(

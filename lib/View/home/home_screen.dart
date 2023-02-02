@@ -53,7 +53,6 @@ class _HomeScreenState extends State<HomeScreen> {
             iconTheme: IconThemeData(color: Colors.white),
             leading: Column(
               children: [
-
                Padding(padding: EdgeInsets.only(top: 10),
                child: Text(
                      "",

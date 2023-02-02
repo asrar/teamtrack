@@ -203,36 +203,25 @@ class _ToolsProjectState extends State<ToolsProject> {
             },
           )
         ],
-        leading: Column(
-          children: [
-            SizedBox(
-              height: Get.height * 0.01,
+        leading: Container(
+          height: double.infinity,
+          width: Get.width * 1.19,
+          decoration: BoxDecoration(
+              color: Colors.green, borderRadius: BorderRadius.circular(5)),
+          child: TextButton(
+            onPressed: () {
+              print("going to refresh ok ?");
+              //          removePreviousRollCall();
+              //          removePreviousEndDay();
+              //          tabbedIndex = 0;
+              //          isPresent = true;
+              setState(() {});
+            },
+            child: Text(
+              "GET",
+              style: TextStyle(color: Colors.black),
             ),
-            Container(
-              height: Get.height * 0.090,
-              width: Get.width * 1.19,
-              decoration: BoxDecoration(
-                  color: Colors.green, borderRadius: BorderRadius.circular(5)),
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 20),
-
-                child: TextButton(
-                  onPressed: () {
-                    print("going to refresh ok ?");
-                    //          removePreviousRollCall();
-                    //          removePreviousEndDay();
-                    //          tabbedIndex = 0;
-                    //          isPresent = true;
-                    setState(() {});
-                  },
-                  child: Text(
-                    "GET",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
-              ),
-            )
-          ],
+          ),
         ),
 
       );
