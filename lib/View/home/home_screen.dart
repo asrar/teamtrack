@@ -9,8 +9,10 @@ import 'package:teamtrack/View/Project/ProjectManager.dart';
 import 'package:teamtrack/View/Project/project_screen.dart';
 import 'package:teamtrack/View/Team/team.dart';
 import 'package:teamtrack/View/material/material_project.dart';
+import 'package:teamtrack/View/profile.dart';
 import 'package:teamtrack/View/tool/tool_project.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 //import 'package:flutter/tool';
 import '../../AppLayer/Provider.dart';
 import '../../Login/UserManager.dart';
@@ -23,23 +25,17 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-
-
-Future userLoggedIn(BuildContext context) async {
-
-
-
-}
+Future userLoggedIn(BuildContext context) async {}
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     print("---- projects length in data is >>> ${Overseer.myProjects.length}");
-    if(Overseer.myProjects.length==0) {
+    if (Overseer.myProjects.length == 0) {
       print("----- At the moment project 0");
       UserManager manager = Provider.of(context).fetch(UserManager);
       manager.loadProjectsData$.listen((event) async {
-      print("print Data Loaded AKS");
+        print("print Data Loaded AKS");
       });
     }
     return DefaultTabController(
@@ -51,43 +47,40 @@ class _HomeScreenState extends State<HomeScreen> {
             centerTitle: true,
             backgroundColor: Colors.black,
             iconTheme: IconThemeData(color: Colors.white),
-            leading: Column(
-              children: [
-               Padding(padding: EdgeInsets.only(top: 10),
-               child: Text(
-                     "",
-                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold ,color: Colors.deepOrange),
-                   )) ,
-              ],
-            ),
+            leading: InkWell(
+                onTap: () {
+                  Get.to(() => ProfileScreen());
+                },
+                child: Icon(Icons.menu, color: Colors.deepOrange)),
             actions: [
               IconButton(
                 onPressed: () {
                   Get.offAll(() => SignIn());
-
                 },
-                icon: const Icon(Icons.exit_to_app,color: Colors.deepOrange,),
+                icon: const Icon(
+                  Icons.exit_to_app,
+                  color: Colors.deepOrange,
+                ),
               ),
             ],
-            title: const Text("Team Track" ,style: TextStyle(fontSize: 18,
-                fontWeight: FontWeight.bold ,color: Colors.deepOrange),),
+            title: const Text(
+              "Team Track",
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.deepOrange),
+            ),
             bottom: PreferredSize(
                 child: Text(Overseer.userName,
                     style: TextStyle(color: Colors.yellow)),
                 preferredSize: Size.zero),
           ),
-
-
-
           body: Container(
-            height: Get.height * .90 ,
+            height: Get.height * .90,
             color: Colors.white,
-
             child: Column(
               children: [
-
                 Container(
-
                   padding: EdgeInsets.only(top: 15),
                   decoration: BoxDecoration(color: Colors.black),
                   height: Get.height * 0.15,
@@ -107,33 +100,34 @@ class _HomeScreenState extends State<HomeScreen> {
                               Get.to(ProjectScreen());
                             },
                             child: Text(
-                              Overseer.projectName == "" || Overseer.firstLoginReq ? "Please Select project" : Overseer.projectName,
-                              style: TextStyle(color: Colors.white,
-                              fontSize: 15),
+                              Overseer.projectName == "" ||
+                                      Overseer.firstLoginReq
+                                  ? "Please Select project"
+                                  : Overseer.projectName,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15),
                             ),
                           ),
                         ),
                       ),
-                    SizedBox(height: 5,),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Container(
                         padding: EdgeInsets.all(5),
                         child: LinearProgressIndicator(
-
-                          backgroundColor: Colors.white,
-                          value: 0.33,
-                          valueColor: AlwaysStoppedAnimation(Colors.green)),)
-                      ,
-                      Text("Project Progress",
-                        style: TextStyle(color: Colors.yellow),
-
+                            backgroundColor: Colors.white,
+                            value: 0.33,
+                            valueColor: AlwaysStoppedAnimation(Colors.green)),
                       ),
-                      
-                      
+                      Text(
+                        "Project Progress",
+                        style: TextStyle(color: Colors.yellow),
+                      ),
                     ],
                   ),
                 ),
                 const TabBar(
-
                   tabs: [
                     Tab(
                       child: Text(
@@ -163,12 +157,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             height: 10,
                           ),
                           tabContainer(
-
                             title: "Team",
                             ontap: () {
-                             if(Overseer.firstLoginReq == false) {
-                               Get.to(TeamScreen());
-                             }
+                              if (Overseer.firstLoginReq == false) {
+                                Get.to(TeamScreen());
+                              }
                             },
                           ),
                           SizedBox(
@@ -177,9 +170,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           tabContainer(
                             title: "Activities",
                             ontap: () {
-    if(Overseer.firstLoginReq == false) {
-      Get.to(ActivitiesScreen());
-    }
+                              if (Overseer.firstLoginReq == false) {
+                                Get.to(ActivitiesScreen());
+                              }
                             },
                           ),
                           SizedBox(
@@ -188,13 +181,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           tabContainer(
                             title: "Use Case",
                             ontap: () {
-                              ProjectManager projectManager = Provider.of(context).fetch(ProjectManager);
-                              projectManager.freshProjectData.listen((event) {
-
-                              });
-    if(Overseer.firstLoginReq == false) {
-      Get.to(MaterialsProject(title: "Project Material"));
-    }
+                              ProjectManager projectManager =
+                                  Provider.of(context).fetch(ProjectManager);
+                              projectManager.freshProjectData
+                                  .listen((event) {});
+                              if (Overseer.firstLoginReq == false) {
+                                Get.to(MaterialsProject(
+                                    title: "Project Material"));
+                              }
                             },
                           ),
                           SizedBox(
@@ -203,21 +197,20 @@ class _HomeScreenState extends State<HomeScreen> {
                           tabContainer(
                             title: "Test Case",
                             ontap: () {
-    if(Overseer.firstLoginReq == false) {
-      Get.to(ToolsProject(title: "Project Tools"));
-    }
+                              if (Overseer.firstLoginReq == false) {
+                                Get.to(ToolsProject(title: "Project Tools"));
+                              }
                             },
                           ),
-
                           SizedBox(
                             height: 10,
                           ),
                           tabContainer(
                             title: "Developer Comment",
                             ontap: () {
-    if(Overseer.firstLoginReq == false) {
-      Get.to(Add_Action_Screen());
-    }
+                              if (Overseer.firstLoginReq == false) {
+                                Get.to(Add_Action_Screen());
+                              }
                             },
                           ),
                           SizedBox(
@@ -229,12 +222,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               Get.to(AddExpanseScreen());
                             },
                           ),
-
                         ],
                       ),
                     ),
                     // 2nd tabbar view view
-                    logsview(title: "Project Logs",),
+                    logsview(
+                      title: "Project Logs",
+                    ),
                   ]),
                 )
               ],

@@ -32,18 +32,14 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     userLoggedIn().whenComplete(() async{
-      Timer(
-          Duration(seconds: 4),
-              (){
+      Timer(Duration(seconds: 4), (){
             print("--- printing after splash loading ---> $userStatus");
-
             if(!userStatus.contains("user-logged-true") ) {
               print(" -- going to login screen ");
               Get.to(SignIn(),);
             }else{
               print("-- splash role Id is ${Overseer.roleId}");
               if(role == "admin") {
-
                   Get.offAll(AdminHomeScreen());
 
               }else {
@@ -67,6 +63,13 @@ class _SplashScreenState extends State<SplashScreen> {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var obtainUser = sharedPreferences.getString('username');
     var obtainRole = sharedPreferences.getString('role');
+    ///
+    if(sharedPreferences.getString('image') != null){
+      Overseer.userImage  = sharedPreferences.getString('image')!;
+      Overseer.userPhone = sharedPreferences.getString('phone')!;
+      Overseer.userEmail = sharedPreferences.getString('email')!;
+      print("this is new thing about user condition");
+    }
     print("Obtainer User"+"$obtainUser");
     print("Obtainer Role"+"$obtainRole");
 

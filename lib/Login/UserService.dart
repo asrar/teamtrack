@@ -2,23 +2,14 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:teamtrack/AppLayer/Overseer.dart';
 import 'package:http/http.dart' as http;
-import 'package:http_parser/http_parser.dart';
 import 'package:get/get.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
-import 'dart:io';
-import 'dart:typed_data';
-import 'package:http_parser/http_parser.dart';
 import '../util/app_constants.dart';
 import 'LoginModel.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:path/path.dart';
 import 'package:flutter/foundation.dart' as Foundation;
 import 'package:http/http.dart' as Http;
 
-// import 'LogInModel.dart';
-// import 'package:dio/dio.dart';
 
 class UserService {
 
@@ -86,7 +77,6 @@ class UserService {
 
       return false;
     } else {
-
         if(content.contains("role_id")) {
           print("--------------------------------------- role ID");
           String sb = content.substring(content.indexOf("role_id")+10,content.indexOf("role_id")+11);
@@ -95,28 +85,32 @@ class UserService {
           SharedPreferences sharedP = await SharedPreferences.getInstance();
           if(sb.contains("1")){
             Overseer.userId = 2;
+            var jString = [content];
+            String arr = jString.toString();
+            List collection = json.decode(arr);
+            List<LoginModel> _userList =
+            collection.map((json) => LoginModel.fromJson(json)).toList();
+            SharedPreferences sharedP = await SharedPreferences.getInstance();
+            sharedP.setString("phone",_userList[0].data.phone);
+            sharedP.setString("email", _userList[0].data.email);
+            sharedP.setString("image", _userList[0].data.image);
+            Overseer.userEmail = _userList[0].data.email;
+            Overseer.userPhone = _userList[0].data.phone;
+            Overseer.userImage = _userList[0].data.image;
             print("----------------Real admin");
-
             sharedP.setString('role',"admin");
-            Overseer.is_user_valid = true;
 
+            Overseer.is_user_valid = true;
 
           }else{
             sharedP.setString('role',"supervisor");
 
           }
         }
-
-
-
       var jString = [content];
       //print("printig from service >>> 1-1 done"+jString.toString().substring(jString.toString().lastIndexOf("csrf_token")));
-
       String arr = jString.toString();
-      
       List collection = json.decode(arr);
-
-
 
       print("status code logine before try"+response.statusCode.toString());
       if(Overseer.userId!=2) {
@@ -140,16 +134,21 @@ class UserService {
             print("setting login query in sp ... ${query}");
             List<LoginModel> _userList =
                collection.map((json) => LoginModel.fromJson(json)).toList();
+            SharedPreferences sharedP = await SharedPreferences.getInstance();
+            sharedP.setString("phone",_userList[0].data.phone);
+            sharedP.setString("email", _userList[0].data.email);
+            sharedP.setString("image", _userList[0].data.image);
+            Overseer.userEmail = _userList[0].data.email;
+            Overseer.userPhone = _userList[0].data.phone;
+            Overseer.userImage = _userList[0].data.image;
                print("user login parisng end");
-            //  Overseer.userName = _userList[0].data.name+" "+_userList[0].data.email;
                setNotificationActive(true);
                Overseer.userId = _userList[0].data.id;
                Overseer.logKeys = _userList[0].logsKey;
                print("Over seer User ID ${Overseer
                    .userId} Sign In User ID ${_userList[0].data.Projects1
                    .length}");
-               Overseer.userName =
-                   _userList[0].data.fName + " " + _userList[0].data.lName;
+               Overseer.userName = _userList[0].data.fName + " " + _userList[0].data.lName;
                Overseer.supervisorName =
                    _userList[0].data.fName + " " + _userList[0].data.lName;
                Overseer.supervisorId = _userList[0].data.id;
@@ -157,23 +156,8 @@ class UserService {
               Overseer.roleId = _userList[0].data.roleId;
                Overseer.projectName = _userList[0].data.Projects1[0].name;
                Overseer.projectId = _userList[0].data.Projects1[0].id;
-            //   Overseer.myteamList = _userList[0].data.Projects1[0].team;
-            //   Overseer.myMaterialList = _userList[0].data.Projects1[0].material;
-            //   Overseer.myToolList = _userList[0].data.Projects1[0].tools;
                Overseer.myProjects = _userList[0].data.Projects1;
-            //
                Overseer.isMaterialToolRefreshed = false;
-            //
-            //   print("--- Projects length is ${Overseer.myProjects.length}");
-            //   Overseer.myActivities =
-            //       _userList[0].data.Projects1[0].type.myActivities;
-            //   Overseer.myProjectActicity =
-            //       _userList[0].data.Projects1[0].type.name;
-            //   print("login status from service   ${_userList[0].data
-            //       .fName}  ${_userList[0].data.lName}  "
-            //       "by ${_userList[0].data.Projects1[0].team[1].fName }");
-            // }
-            //
 
             print("-----------------1st Login -----");
             Overseer.firstLoginReq = true;
@@ -184,7 +168,7 @@ class UserService {
         }
       }
       return true;
-    } // end of main top if ( does not contain error )
+    }
   }
 
 

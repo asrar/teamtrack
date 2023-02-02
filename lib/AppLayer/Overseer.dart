@@ -113,6 +113,9 @@ class Overseer {
   static String videoCaption = "";
   static String fitnesgoal_name = "";
   static String gender = "";
+  static String userPhone = "";
+  static String userEmail = "";
+  static String userImage = "";
   static String heightin = "";
   static String weighttin = "";
   static String createUserActivityMessage = "";
