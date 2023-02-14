@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Scaffold(
           appBar: PreferredSize(
             preferredSize:
-            Size.fromHeight(200),
+            Size.fromHeight(170),
             child: AppBar(
               elevation: 0,
               centerTitle: true,
