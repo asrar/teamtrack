@@ -41,6 +41,7 @@ dependencies:
   http: ^0.13.4
   intl: ^0.17.0
   rxdart:
+  firebase_messaging: 14.2.1
   shared_preferences: ^2.0.15
   flutter_local_notifications: ^9.1.5
   scroll_loop_auto_scroll:

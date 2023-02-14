@@ -14,32 +14,22 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:teamtrack/helper/notification_helper.dart';
 
+enum Size { small, medium, large }
 
-enum Size {
-  small,
-  medium,
-  large
-}
+enum BorderType { start, middle, end, theend }
 
-enum BorderType {
-  start,
-  middle,
-  end,
-  theend
-}
 Future<void> main() async {
-
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
- // await Firebase.initializeApp();
+  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   try {
     if (GetPlatform.isMobile) {
-      final RemoteMessage? remoteMessage = await FirebaseMessaging.instance.getInitialMessage();
-
-
+      final RemoteMessage? remoteMessage =
+          await FirebaseMessaging.instance.getInitialMessage();
       FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
     }
-  }catch(e) {}
+  } catch (e) {}
 
   runApp(const MyApp());
 }
@@ -61,7 +51,6 @@ class MyApp extends StatelessWidget {
         ));
   }
 }
-
 
 class MyHttpOverrides extends HttpOverrides {
   @override

@@ -146,7 +146,7 @@ packages:
     source: hosted
     version: "2.1.0"
   firebase_messaging:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       name: firebase_messaging
       sha256: dc010a6436333029fba858415fe65887c3fe44d8f6e6ea162bb8d3dd764fbcb6

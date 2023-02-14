@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:teamtrack/AppLayer/Provider.dart';
 import 'package:teamtrack/Login/UserManager.dart';
 import 'package:teamtrack/View/home/home_screen.dart';
@@ -27,10 +28,16 @@ class _SplashScreenState extends State<SplashScreen> {
 
   String userStatus = "";
   String role = "";
-
+  String? token ;
+  // FirebaseMessaging token =  FirebaseMessaging.instance;
+  Future<void> getToken() async {
+    token = await FirebaseMessaging.instance.getToken();
+    print("this is my fcm token ${token.toString()}");
+  }
   @override
   void initState() {
     super.initState();
+    getToken();
     userLoggedIn().whenComplete(() async{
       Timer(Duration(seconds: 4), (){
             print("--- printing after splash loading ---> $userStatus");
