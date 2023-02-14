@@ -28,6 +28,19 @@ class HomeScreen extends StatefulWidget {
 Future userLoggedIn(BuildContext context) async {}
 
 class _HomeScreenState extends State<HomeScreen> {
+  SharedPreferences? sharedP;
+  var image;
+
+  @override
+  Future<void> initState() async {
+    // TODO: implement initState
+    sharedP = await SharedPreferences.getInstance();
+    if(sharedP!.getString("image") != null){
+      image = sharedP!.getString("image");
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     print("---- projects length in data is >>> ${Overseer.myProjects.length}");
@@ -42,48 +55,77 @@ class _HomeScreenState extends State<HomeScreen> {
       length: 2,
       child: SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            centerTitle: true,
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  // begin: Alignment.topCenter,
-                  // end: Alignment.bottomCenter,
-                    colors: <Color>[Color(0xff5E70D8), Color(0xffCA57E3)]),
-              ),
-            ),
-            iconTheme: IconThemeData(color: Colors.white),
-            leading: InkWell(
-                onTap: () {
-                  Get.to(() => ProfileScreen());
-                },
-                child: Icon(Icons.menu, color: Colors.deepOrange)),
-            actions: [
-              IconButton(
-                onPressed: () {
-                  Get.offAll(() => SignIn());
-                },
-                icon: const Icon(
-                  Icons.exit_to_app,
-                  color: Colors.deepOrange,
+          appBar: PreferredSize(
+            preferredSize:
+            Size.fromHeight(200),
+            child: AppBar(
+              elevation: 0,
+              centerTitle: true,
+              flexibleSpace: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    // begin: Alignment.topCenter,
+                    // end: Alignment.bottomCenter,
+                      colors: <Color>[Color(0xff5E70D8), Color(0xffCA57E3)]),
+                ),
+                child: Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
+                        image == null ?  Container(
+                          margin: EdgeInsets.only(left: 30,top: 41),
+                          child: CircleAvatar(
+                            maxRadius: 50,
+                            // minRadius: ,
+                            backgroundImage: AssetImage("assets/images/waleed.jpeg"),
+                          ),
+                          height: 100,
+                          width: 100,
+                        ): Container(
+                          margin: EdgeInsets.only(left: 30,top: 41),
+                          child: CircleAvatar(
+                            maxRadius: 50,
+                            // minRadius: ,
+                            backgroundImage: AssetImage("assets/images/waleed.jpeg"),
+                          ),
+                          height: 100,
+                          width: 100,
+                        ),
+                      ],
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width*0.6,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: MediaQuery.of(context).size.height*0.07,),
+                          tabContainer12(context: context,title: Overseer.userName, ontap: () {}),
+                          tabContainer12(context: context,title: Overseer.userPhone, ontap: () {}),
+                          tabContainer12(context: context,title: Overseer.userEmail, ontap: () {}),
+                        ],
+                      ),
+                    )
+
+                  ],
                 ),
               ),
-            ],
-            title: const Text(
-              "Team Track",
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.deepOrange),
+              iconTheme: IconThemeData(color: Colors.white),
+              title: Text(
+                Overseer.userName,
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.deepOrange),
+              ),
+              // bottom: ,
             ),
-            bottom: PreferredSize(
-                child: Text(Overseer.userName,
-                    style: TextStyle(color: Colors.yellow)),
-                preferredSize: Size.zero),
           ),
           body: Container(
-            height: Get.height * .90,
+            // height: Get.height * .90,
             color: Colors.white,
             child: Column(
               children: [
@@ -159,7 +201,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Container(
                   // color: Colors.green,
-                  height: Get.height * 0.58,
+                  height: Get.height * 0.45,
                   color: Colors.white,
 
                   child: TabBarView(children: [
@@ -294,4 +336,28 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+  Widget tabContainer12({required BuildContext context,required String title, required Function() ontap}) {
+    return GestureDetector(
+        onTap: ontap,
+        child: Container(
+          // height: Get.height * 0.060,
+          // width: double.infinity,
+          margin: EdgeInsets.symmetric(vertical: 3),
+          padding: EdgeInsets.only(left: 10,right: 10),
+          decoration: BoxDecoration(
+            // color: Colors.deepOrange,
+              gradient: Overseer.gradientBody(),
+              borderRadius: BorderRadius.circular(15)),
+          child: Text(
+            title,
+            textAlign: TextAlign.start,
+            style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'poppins',
+                fontWeight: FontWeight.normal,
+                fontSize: 16),
+          ),
+        ));
+  }
+
 }

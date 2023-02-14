@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teamtrack/View/home/home_screen.dart';
 import 'package:teamtrack/splash_screen.dart';
 import 'package:teamtrack/util/app_constants.dart';
-import 'package:teamtrack/splash_screen.dart';
-import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:teamtrack/AppLayer/Overseer.dart';
 import 'package:teamtrack/AppLayer/Provider.dart' as pro;
-import 'package:get/get.dart';
-import 'AppLayer/Overseer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:teamtrack/helper/notification_helper.dart';
