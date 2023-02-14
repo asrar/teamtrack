@@ -17,7 +17,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        backgroundColor: Colors.black,
+        flexibleSpace: Overseer.appGradient(),
         iconTheme: IconThemeData(color: Colors.white),
         title:  Text(Overseer.userName ,style: TextStyle(fontSize: 18,
             fontWeight: FontWeight.bold ,color: Colors.deepOrange),),

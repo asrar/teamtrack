@@ -45,7 +45,14 @@ class _HomeScreenState extends State<HomeScreen> {
           appBar: AppBar(
             elevation: 0,
             centerTitle: true,
-            backgroundColor: Colors.black,
+            flexibleSpace: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  // begin: Alignment.topCenter,
+                  // end: Alignment.bottomCenter,
+                    colors: <Color>[Color(0xff5E70D8), Color(0xffCA57E3)]),
+              ),
+            ),
             iconTheme: IconThemeData(color: Colors.white),
             leading: InkWell(
                 onTap: () {
@@ -82,7 +89,13 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Container(
                   padding: EdgeInsets.only(top: 15),
-                  decoration: BoxDecoration(color: Colors.black),
+                  decoration: BoxDecoration(
+
+                      gradient: LinearGradient(
+                        // begin: Alignment.topCenter,
+                        // end: Alignment.bottomCenter,
+                          colors: <Color>[Color(0xff5E70D8), Color(0xffCA57E3)]),
+                      color: Colors.black),
                   height: Get.height * 0.15,
                   width: double.infinity,
                   child: Column(

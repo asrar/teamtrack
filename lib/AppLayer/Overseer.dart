@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:teamtrack/Login/UserManager.dart';
 import 'package:teamtrack/View/Add_Expanse/AddExpenseManager.dart';
 import 'package:teamtrack/View/Project/ProjectManager.dart';
@@ -105,6 +106,22 @@ class Overseer {
   static String home_text_2nd = "";
   static String course_image_path = "";
   static String base_URL = "";
+  static Container appGradient(){
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          // begin: Alignment.topCenter,
+          // end: Alignment.bottomCenter,
+            colors: <Color>[Color(0xff5E70D8), Color(0xffCA57E3)]),
+      ),
+    );
+  }
+  static LinearGradient gradientBody()  {
+    return LinearGradient(
+  // begin: Alignment.topCenter,
+  // end: Alignment.bottomCenter,
+  colors: <Color>[Color(0xff5E70D8), Color(0xffCA57E3)]);
+  }
   static String login_status = "";
   static String register_status = "";
   static String videoURL = "";
