@@ -29,12 +29,13 @@ class _Add_Action_ScreenState extends State<Add_Action_Screen> {
         elevation: 0,
         centerTitle: true,
         backgroundColor: Color(0xffeb5f30),
+        flexibleSpace: Overseer.appGradient(),
         actions: [
           Container(
             height: double.infinity,
             width: Get.width * 0.25,
             decoration: BoxDecoration(
-                color: Colors.green, borderRadius: BorderRadius.circular(5)),
+                 borderRadius: BorderRadius.circular(5)),
             child: Center(
               child: TextButton(
                 onPressed: () {

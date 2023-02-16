@@ -214,6 +214,7 @@ class _MaterialsProjectState extends State<MaterialsProject> {
         elevation: 0.1,
         backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
         title: Text(widget.title),
+        flexibleSpace: Overseer.appGradient(),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.close),
@@ -225,8 +226,7 @@ class _MaterialsProjectState extends State<MaterialsProject> {
         leading: Container(
           height: double.infinity,
           width: Get.width * 1.19,
-          decoration: BoxDecoration(
-              color: Colors.green, borderRadius: BorderRadius.circular(5)),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
           child: TextButton(
             onPressed: () {
               //          removePreviousRollCall();

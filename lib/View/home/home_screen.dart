@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teamtrack/AppLayer/Overseer.dart';
-import 'package:teamtrack/Login/sign_in.dart';
+
 import 'package:teamtrack/View/Activities/activities_screen.dart';
 import 'package:teamtrack/View/Add_Action/add_action.dart';
 import 'package:teamtrack/View/Add_Expanse/add_expanse_screen.dart';
@@ -9,11 +9,8 @@ import 'package:teamtrack/View/Project/ProjectManager.dart';
 import 'package:teamtrack/View/Project/project_screen.dart';
 import 'package:teamtrack/View/Team/team.dart';
 import 'package:teamtrack/View/material/material_project.dart';
-import 'package:teamtrack/View/profile.dart';
 import 'package:teamtrack/View/tool/tool_project.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-//import 'package:flutter/tool';
 import '../../AppLayer/Provider.dart';
 import '../../Login/UserManager.dart';
 import '../logs/logsview.dart';
@@ -28,18 +25,19 @@ class HomeScreen extends StatefulWidget {
 Future userLoggedIn(BuildContext context) async {}
 
 class _HomeScreenState extends State<HomeScreen> {
-  SharedPreferences? sharedP;
+  // SharedPreferences? sharedP ;
   var image;
+  // // sharedP  =  ;
+  // @override
+  // void initState() async{
+  //    sharedP = await  SharedPreferences.getInstance();
+  //      if (sharedP!.getString("image") != null) {
+  //        image = sharedP!.getString("image");
+  //      }
+  //   // TODO: implement initState
+  //   super.initState();
+  // }
 
-  @override
-  Future<void> initState() async {
-    // TODO: implement initState
-    sharedP = await SharedPreferences.getInstance();
-    if(sharedP!.getString("image") != null){
-      image = sharedP!.getString("image");
-    }
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,16 +54,15 @@ class _HomeScreenState extends State<HomeScreen> {
       child: SafeArea(
         child: Scaffold(
           appBar: PreferredSize(
-            preferredSize:
-            Size.fromHeight(170),
+            preferredSize: Size.fromHeight(170),
             child: AppBar(
               elevation: 0,
               centerTitle: true,
               flexibleSpace: Container(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                    // begin: Alignment.topCenter,
-                    // end: Alignment.bottomCenter,
+                      // begin: Alignment.topCenter,
+                      // end: Alignment.bottomCenter,
                       colors: <Color>[Color(0xff5E70D8), Color(0xffCA57E3)]),
                 ),
                 child: Row(
@@ -76,40 +73,54 @@ class _HomeScreenState extends State<HomeScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
                         ),
-                        image == null ?  Container(
-                          margin: EdgeInsets.only(left: 30,top: 41),
-                          child: CircleAvatar(
-                            maxRadius: 50,
-                            // minRadius: ,
-                            backgroundImage: AssetImage("assets/images/waleed.jpeg"),
-                          ),
-                          height: 100,
-                          width: 100,
-                        ): Container(
-                          margin: EdgeInsets.only(left: 30,top: 41),
-                          child: CircleAvatar(
-                            maxRadius: 50,
-                            // minRadius: ,
-                            backgroundImage: AssetImage("assets/images/waleed.jpeg"),
-                          ),
-                          height: 100,
-                          width: 100,
-                        ),
+                        image == null
+                            ? Container(
+                                margin: EdgeInsets.only(left: 30, top: 41),
+                                child: CircleAvatar(
+                                  maxRadius: 50,
+                                  // minRadius: ,
+                                  backgroundImage:
+                                      AssetImage("assets/images/waleed.jpeg"),
+                                ),
+                                height: 100,
+                                width: 100,
+                              )
+                            : Container(
+                                margin: EdgeInsets.only(left: 30, top: 41),
+                                child: CircleAvatar(
+                                  maxRadius: 50,
+                                  // minRadius: ,
+                                  backgroundImage:
+                                      AssetImage("assets/images/waleed.jpeg"),
+                                ),
+                                height: 100,
+                                width: 100,
+                              ),
                       ],
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width*0.6,
+                      width: MediaQuery.of(context).size.width * 0.6,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: MediaQuery.of(context).size.height*0.07,),
-                          tabContainer12(context: context,title: Overseer.userName, ontap: () {}),
-                          tabContainer12(context: context,title: Overseer.userPhone, ontap: () {}),
-                          tabContainer12(context: context,title: Overseer.userEmail, ontap: () {}),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.07,
+                          ),
+                          tabContainer12(
+                              context: context,
+                              title: Overseer.userName,
+                              ontap: () {}),
+                          tabContainer12(
+                              context: context,
+                              title: Overseer.userPhone,
+                              ontap: () {}),
+                          tabContainer12(
+                              context: context,
+                              title: Overseer.userEmail,
+                              ontap: () {}),
                         ],
                       ),
                     )
-
                   ],
                 ),
               ),
@@ -132,11 +143,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   padding: EdgeInsets.only(top: 15),
                   decoration: BoxDecoration(
-
                       gradient: LinearGradient(
-                        // begin: Alignment.topCenter,
-                        // end: Alignment.bottomCenter,
-                          colors: <Color>[Color(0xff5E70D8), Color(0xffCA57E3)]),
+                          // begin: Alignment.topCenter,
+                          // end: Alignment.bottomCenter,
+                          colors: <Color>[
+                            Color(0xff5E70D8),
+                            Color(0xffCA57E3)
+                          ]),
                       color: Colors.black),
                   height: Get.height * 0.15,
                   width: double.infinity,
@@ -196,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                   // isScrollable: true,
-                  indicatorColor: Colors.deepOrange,
+                  indicatorColor: Color(0xff5E70D8),
                   indicatorWeight: 5,
                 ),
                 Container(
@@ -301,12 +314,13 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Card(
               elevation: 5,
-              color: Colors.deepOrange,
+              // color: Colors.deepOrange,
               child: Container(
                 height: Get.height * 0.060,
                 width: Get.width * 0.85,
                 decoration: BoxDecoration(
-                    color: Colors.deepOrange,
+                  gradient: Overseer.gradientBody(),
+                    // color: Colors.deepOrange,
                     borderRadius: BorderRadius.circular(15)),
                 child: Center(
                     child: Text(
@@ -336,16 +350,20 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-  Widget tabContainer12({required BuildContext context,required String title, required Function() ontap}) {
+
+  Widget tabContainer12(
+      {required BuildContext context,
+      required String title,
+      required Function() ontap}) {
     return GestureDetector(
         onTap: ontap,
         child: Container(
           // height: Get.height * 0.060,
           // width: double.infinity,
           margin: EdgeInsets.symmetric(vertical: 3),
-          padding: EdgeInsets.only(left: 10,right: 10),
+          padding: EdgeInsets.only(left: 10, right: 10),
           decoration: BoxDecoration(
-            // color: Colors.deepOrange,
+              // color: Colors.deepOrange,
               gradient: Overseer.gradientBody(),
               borderRadius: BorderRadius.circular(15)),
           child: Text(
@@ -359,5 +377,4 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ));
   }
-
 }

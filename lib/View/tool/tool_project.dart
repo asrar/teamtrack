@@ -195,6 +195,7 @@ class _ToolsProjectState extends State<ToolsProject> {
         elevation: 0.1,
         backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
         title: Text(Overseer.projectName ),
+        flexibleSpace: Overseer.appGradient(),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.close),
@@ -207,7 +208,8 @@ class _ToolsProjectState extends State<ToolsProject> {
           height: double.infinity,
           width: Get.width * 1.19,
           decoration: BoxDecoration(
-              color: Colors.green, borderRadius: BorderRadius.circular(5)),
+              // color: Colors.green,
+              borderRadius: BorderRadius.circular(5)),
           child: TextButton(
             onPressed: () {
               print("going to refresh ok ?");

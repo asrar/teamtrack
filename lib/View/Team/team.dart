@@ -5,6 +5,7 @@ import 'package:teamtrack/logs/LogsManager.dart';
 import 'package:teamtrack/View/Project/ProjectManager.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:teamtrack/util/app_constants.dart';
 import '../../AppLayer/Provider.dart';
 import '../Project/ProjectManager.dart';
 import 'package:teamtrack/View/Project/ProjectManager.dart';
@@ -55,13 +56,13 @@ class _TeamScreenState extends State<TeamScreen> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        backgroundColor: Color(0xffeb5f30),
+        // backgroundColor: ,
+        flexibleSpace: Overseer.appGradient(),
         actions: [
           Container(
             height: Get.height * 0.03,
             width: Get.width * 0.25,
-            decoration: BoxDecoration(
-                color: Colors.green, borderRadius: BorderRadius.circular(5)),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
             child: Center(
               child: TextButton(
                 onPressed: () {
@@ -85,7 +86,7 @@ class _TeamScreenState extends State<TeamScreen> {
           height: double.infinity,
           width: Get.width * 0.99,
           decoration: BoxDecoration(
-              color: Colors.green, borderRadius: BorderRadius.circular(5)),
+              borderRadius: BorderRadius.circular(5)),
           child: TextButton(
             onPressed: () {
           //          removePreviousRollCall();
@@ -122,10 +123,13 @@ class _TeamScreenState extends State<TeamScreen> {
                             padding: EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 20),
                             decoration: BoxDecoration(
-                              color: Overseer.myteamList[index].roleId
-                                      .contains("4")
-                                  ? Colors.deepOrangeAccent
-                                  : Colors.white,
+                              gradient: Overseer.myteamList[index].roleId
+                                  .contains("4")
+                                  ?  Overseer.gradientBody() : LinearGradient(colors: [Colors.white,Colors.white]),
+                              // color: Overseer.myteamList[index].roleId
+                              //         .contains("4")
+                              //     ? Colors.deepOrangeAccent
+                              //     : Colors.white,
                             ),
                             child: Row(
                               children: [
