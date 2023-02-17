@@ -1,19 +1,12 @@
 import 'package:teamtrack/AppLayer/Provider.dart';
 import 'package:teamtrack/getlogs/GetLogsManager.dart';
 import 'package:teamtrack/getlogs/GetLogsModel.dart';
-import 'package:teamtrack/model/logsmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:teamtrack/View/logs/detail_page.dart';
-
 import '../../AppLayer/Observer.dart';
 
-
-
-
-
 class logsview extends StatefulWidget {
-  logsview({ required this.title}) : super();
+  logsview({required this.title}) : super();
 
   final String title;
 
@@ -22,11 +15,12 @@ class logsview extends StatefulWidget {
 }
 
 class _logsviewState extends State<logsview> {
-  List ?lessons;
+  List? lessons;
   ScrollController _scrollController = ScrollController();
+
   @override
   void initState() {
-   // lessons = getLessons();
+    // lessons = getLessons();
     super.initState();
   }
 
@@ -52,7 +46,6 @@ class _logsviewState extends State<logsview> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           Expanded(
             child: Observer<List<GetLogsModel>>(
               stream: manager.logsList,
@@ -64,11 +57,10 @@ class _logsviewState extends State<logsview> {
                 GetLogsModel logList = _productList[0];
 
                 return ListView.builder(
-                  // for Auto-scrolling binding controller in build method
+                    // for Auto-scrolling binding controller in build method
                     controller: _scrollController,
                     //  reverse: true,
                     shrinkWrap: true,
-
                     addAutomaticKeepAlives: true,
                     scrollDirection: Axis.vertical,
                     itemCount: _productList[0].data.length,
@@ -76,15 +68,17 @@ class _logsviewState extends State<logsview> {
                       print("printing from list tile");
                       GetLogsModel _post = _productList[0];
 
-
-
                       return Card(
                         elevation: 8.0,
-                        margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+                        margin: new EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 6.0),
                         child: Container(
                           decoration: BoxDecoration(color: Colors.white),
-                          child: Html(data: _productList[0].data[index],
+                          child: Html(
+                            data: _productList[0].data[index],
                             tagsList: Html.tags,
+
+                            // style:
                           ),
                         ),
                       );
@@ -100,11 +94,8 @@ class _logsviewState extends State<logsview> {
               },
             ),
           ),
-
-
         ],
       ),
     );
   }
 }
-

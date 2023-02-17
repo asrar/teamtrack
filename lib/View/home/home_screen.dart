@@ -312,26 +312,30 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: ontap,
         child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Card(
-              elevation: 5,
-              // color: Colors.deepOrange,
-              child: Container(
-                height: Get.height * 0.060,
-                width: Get.width * 0.85,
-                decoration: BoxDecoration(
-                  gradient: Overseer.gradientBody(),
-                    // color: Colors.deepOrange,
-                    borderRadius: BorderRadius.circular(15)),
-                child: Center(
-                    child: Text(
-                  title,
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'poppins',
-                      fontWeight: FontWeight.normal,
-                      fontSize: 16),
-                )),
+            child: Container(
+              height: Get.height * 0.060,
+              width: Get.width * 0.85,
+              decoration: BoxDecoration(
+                gradient: Overseer.gradientBody(),
+                  // color: Colors.deepOrange,
+                  borderRadius: BorderRadius.circular(15)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(width: MediaQuery.of(context).size.width*0.1,),
+                  Text(
+                    title,
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'poppins',
+                    fontWeight: FontWeight.normal,
+                    fontSize: 16),
+                  ),
+                  Spacer(),
+                  Icon(Icons.arrow_forward_ios,color: Colors.white,)
+                ],
               ),
             )));
   }
