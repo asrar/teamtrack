@@ -24,31 +24,31 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Container(
       height: 50,
      // width: 150,
-      child: TextField(
+      child: TextFormField(
           onChanged: widget.onChanged,
-
-
           // style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           obscureText: widget.passwordTxt,
           textInputAction: TextInputAction.next,
           keyboardType: TextInputType.emailAddress,
-          cursorColor: Color(0xff5492FD),
+          cursorColor: Colors.black,
+
           decoration: InputDecoration(
+            border: InputBorder.none,
             errorText: widget.errortext,
             hintText: widget.textFieldText,
             labelStyle: TextStyle(
               fontFamily: 'Comfortaa',
               color: Colors.black,
             ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.grey, width: 1.0),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide:
-              const BorderSide(color: Color(0xff5492FD), width: 1.0),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
+            // enabledBorder: OutlineInputBorder(
+            //   borderSide: const BorderSide(color: Colors.grey, width: 1.0),
+            //   borderRadius: BorderRadius.circular(10.0),
+            // ),
+            // focusedBorder: OutlineInputBorder(
+            //   borderSide:
+            //   const BorderSide(color: Color(0xff5492FD), width: 1.0),
+            //   borderRadius: BorderRadius.circular(10.0),
+            // ),
           )),
     );
   }

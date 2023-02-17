@@ -78,7 +78,7 @@ class _Add_Action_ScreenState extends State<Add_Action_Screen> {
               Text(
                 "Add Comment to User Flow",
                 style: TextStyle(
-                    color: Color(0xffeb5f30),
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'poppins',
                     fontSize: 20),
@@ -130,7 +130,7 @@ class _Add_Action_ScreenState extends State<Add_Action_Screen> {
                   return TextField(
                     maxLines: 10,
                     keyboardType: TextInputType.multiline,
-                    cursorColor: Color(0xffeb5f30),
+                    cursorColor: Colors.black,
                     onChanged: (value) {
                       manager.inDetails.add(value);
                     },
@@ -140,19 +140,20 @@ class _Add_Action_ScreenState extends State<Add_Action_Screen> {
                             ? ""
                             : snapshot.error.toString(),
 
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: Color(0xffeb5f30), width: 2.0),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: Color(0xffeb5f30), width: 2.0),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
+                        // enabledBorder: OutlineInputBorder(
+                        //   borderSide: const BorderSide(
+                        //       color: Colors.black, width: 2.0),
+                        //   borderRadius: BorderRadius.circular(10.0),
+                        // ),
+                        // focusedBorder: OutlineInputBorder(
+                        //   borderSide: const BorderSide(
+                        //       color: Colors.black, width: 2.0),
+                        //   borderRadius: BorderRadius.circular(10.0),
+                        // ),
+                        border: InputBorder.none,
                         labelText: 'Detail',
                         labelStyle: TextStyle(
-                          color: Color(0xffeb5f30),
+                          color: Colors.black,
                         )
                         // hintText: 'Enter Your Name',
                         ),
@@ -227,12 +228,10 @@ class _Add_Action_ScreenState extends State<Add_Action_Screen> {
                           },
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: 10),
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width,
+                            width: MediaQuery.of(context).size.width,
                             decoration: BoxDecoration(
-                                color: Color(0xffeb5f30),
+                                // color: Color(0xffeb5f30),
+                              gradient: Overseer.gradientBody(),
                                 borderRadius: BorderRadius.all(
                                     Radius.circular(10))
 

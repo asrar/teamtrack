@@ -29,7 +29,7 @@ class _logsviewState extends State<logsview> {
     GetLogsManager manager = Provider.of(context).fetch(GetLogsManager);
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
+      backgroundColor: Color(0xffF6F7FB),
       // floatingActionButton: FloatingActionButton(
       //   backgroundColor: Color(0xFF3E6EA4),
       //   child: Column(
@@ -85,7 +85,9 @@ class _logsviewState extends State<logsview> {
                     });
               },
               onWaiting: (context) {
-                return Center(child: CircularProgressIndicator());
+                return Container(
+                    color: Color(0xffF6F7FB),
+                    child: Center(child: CircularProgressIndicator()));
               },
               onError: (context, error) {
                 print("printing error");

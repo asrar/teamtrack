@@ -77,7 +77,7 @@ class _AddExpanseScreenScreenState extends State<AddExpanseScreen> {
               Text(
                 "Remaining Item",
                 style: TextStyle(
-                    color: Color(0xffeb5f30),
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'poppins',
                     fontSize: 20),
@@ -156,20 +156,20 @@ class _AddExpanseScreenScreenState extends State<AddExpanseScreen> {
                               errorText: snapshot.error == null
                                   ? ""
                                   : snapshot.error.toString(),
-
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Color(0xffeb5f30), width: 2.0),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Color(0xffeb5f30), width: 2.0),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
+                              border: InputBorder.none,
+                              // enabledBorder: OutlineInputBorder(
+                              //   borderSide: const BorderSide(
+                              //       color: Color(0xffeb5f30), width: 2.0),
+                              //   borderRadius: BorderRadius.circular(10.0),
+                              // ),
+                              // focusedBorder: OutlineInputBorder(
+                              //   borderSide: const BorderSide(
+                              //       color: Color(0xffeb5f30), width: 2.0),
+                              //   borderRadius: BorderRadius.circular(10.0),
+                              // ),
                               labelText: 'Detail',
                               labelStyle: TextStyle(
-                                color: Color(0xffeb5f30),
+                                color: Colors.black,
                               )
                             // hintText: 'Enter Your Name',
                           ),
@@ -254,7 +254,8 @@ class _AddExpanseScreenScreenState extends State<AddExpanseScreen> {
                               .size
                               .width,
                           decoration: BoxDecoration(
-                              color: Color(0xffeb5f30),
+                            gradient: Overseer.gradientBody(),
+                              // color: Color(0xffeb5f30),
                               borderRadius: BorderRadius.all(
                                   Radius.circular(10))
 

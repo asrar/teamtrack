@@ -57,12 +57,15 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
               itemBuilder: (context, index) {
               return  Card(
                   child: ExpansionTile(
-                    iconColor: Color(0xffeb5f30),
-                    textColor: Color(0xffeb5f30),
+                    // leading: Icon,
+                    iconColor: Colors.black,
+                    // textColor: Color(0xffeb5f30),
                     title: Text(
                       Overseer.myActivities[index],
                       style: TextStyle(
-                          fontFamily: 'poppins', fontWeight: FontWeight.w900),
+                          fontFamily: 'poppins',
+                          color: Colors.black,
+                          fontWeight: FontWeight.w900),
                     ),
                     children: [
                       GestureDetector(
@@ -103,7 +106,8 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                                                       fontWeight: FontWeight.bold,
 
                                                       letterSpacing: 3,
-                                                      color: Colors.deepOrange),
+                                                      color: Colors.black
+                                                  ),
                                                   children: [
                                                     TextSpan(
                                                         text:
@@ -111,8 +115,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                                                         style: TextStyle(
                                                             fontWeight:
                                                             FontWeight.w500,
-                                                            color:
-                                                            Color(0xffeb5f30)))
+                                                            color: Colors.black))
                                                   ]),
                                             ),
                                             SizedBox(
@@ -122,6 +125,8 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                                               text: TextSpan(
                                                   text: 'Start Time:   ',
                                                   style: TextStyle(
+                                                      fontWeight:
+                                                      FontWeight.w500,
                                                       fontFamily: 'poppins',
                                                       letterSpacing: 1,
                                                       color: Colors.black),
@@ -133,7 +138,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                                                             fontWeight:
                                                             FontWeight.w500,
                                                             color:
-                                                            Color(0xffeb5f30)))
+                                                            Colors.black))
                                                   ]),
                                             ),
                                             // SizedBox(
@@ -166,7 +171,8 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                                                 height: Get.height * 0.060,
                                                 width: Get.width * 0.50,
                                                 decoration: BoxDecoration(
-                                                    color: Colors.deepOrange,
+                                                  gradient: Overseer.gradientBody(),
+                                                    // color: Colors.deepOrange,
                                                     borderRadius:
                                                     BorderRadius.circular(15)),
                                                 child: Center(
@@ -194,7 +200,8 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                                                 height: Get.height * 0.060,
                                                 width: Get.width * 0.50,
                                                 decoration: BoxDecoration(
-                                                    color: Colors.green,
+                                                  gradient: Overseer.gradientBody(),
+                                                    // color: Colors.green,
                                                     borderRadius:
                                                     BorderRadius.circular(15)),
                                                 child: Center(
